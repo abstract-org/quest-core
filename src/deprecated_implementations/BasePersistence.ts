@@ -1,9 +1,8 @@
 import mitt, { Emitter } from 'mitt'
 import { IPersistence } from '..'
-import { ISDKEvents } from '@abstract-org/sdk/dist/src/interfaces'
 
 export abstract class BasePersistence implements IPersistence {
-    constructor(protected events: Emitter<ISDKEvents>) {
+    constructor(protected events: Emitter<any>) {
         events.on('questCreated', this.handleQuestCreated.bind(this))
     }
 

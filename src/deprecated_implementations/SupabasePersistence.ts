@@ -1,10 +1,9 @@
 import { SupabaseClient } from '@supabase/supabase-js'
 import { BasePersistence } from './BasePersistence'
-import { ISDKEvents } from '@abstract-org/sdk/dist/src/interfaces'
 import { Emitter } from 'mitt'
 
 export class SupabasePersistence extends BasePersistence {
-    constructor(events: Emitter<ISDKEvents>, private supabase: SupabaseClient) {
+    constructor(events: Emitter<any>, private supabase: SupabaseClient) {
         super(events)
     }
 
@@ -40,6 +39,9 @@ export class SupabasePersistence extends BasePersistence {
         citingPool: any,
         amount: number
     ): Promise<any> {
+        this.events.on('questCited', () => {
+            // store in DB cited data
+        })
         throw new Error('Method not implemented.')
     }
 
