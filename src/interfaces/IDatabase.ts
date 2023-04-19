@@ -1,5 +1,4 @@
 export interface IDatabase {
-    connect(): void
     find(
         table: string,
         filter: Record<string, unknown>,

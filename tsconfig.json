@@ -30,6 +30,6 @@
         "module": "ES2022",
         "target": "ES2022"
     },
-    "include": ["src/**/*", "__tests__/**/*"],
+    "include": ["src/**/*", "src/__tests__/**/*"],
     "exclude": ["dist", "**/node_modules"]
 }

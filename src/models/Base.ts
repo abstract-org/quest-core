@@ -1,16 +1,19 @@
 // src/models/base.ts
-import { IDatabase } from '../interfaces/IDatabase'
+import { IDatabase } from '@/interfaces/IDatabase'
 
 export abstract class BaseModel<T> {
-    protected constructor(protected db: IDatabase, data: Partial<T>) {
+    protected db: IDatabase
+
+    protected constructor(db: IDatabase, data: Partial<T>) {
+        this.db = db
         Object.assign(this, data)
     }
 
     static async create<T extends BaseModel<any>>(
         this: { new (db: IDatabase, data: Partial<T>): T },
         db: IDatabase,
-        data: Partial<T>,
-        table: string
+        table: string,
+        data: Partial<T>
     ): Promise<T> {
         const createdData = await db.create(table, data)
         return new this(db, createdData)

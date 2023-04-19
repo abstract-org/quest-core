@@ -9,8 +9,6 @@ export class SupabaseAdapter implements IDatabase {
         this.supabase = createClient(supabaseUrl, supabaseKey)
     }
 
-    connect(): void {}
-
     async find(table: string, filter: Record<string, unknown>): Promise<any[]> {
         const { data, error } = await this.supabase
             .from(table)
